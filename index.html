@@ -91,9 +91,9 @@ main:has(#story[hidden]){padding:0;max-width:none}
 .gate-flash.active{animation:roseFlash 1.2s ease-in-out forwards}
 @keyframes roseFlash{45%{opacity:.95}100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.heart-stage,.key-button,.gate-stars::before,.gate-stars::after{animation:none}}
-.final-scene{text-align:center;margin:48px 0 20px;padding:32px 20px;background:linear-gradient(160deg,#fffdf8,#f7e1e9);border:1px solid #deb7c7;border-radius:140px 140px 20px 20px;box-shadow:0 18px 50px #9b536e15}.final-sticker{display:block;width:min(100%,420px);height:auto;margin:20px auto}.final-scene h2{font-size:clamp(2.3rem,8vw,3.6rem);color:#944961}.final-scene p{max-width:48ch;margin:20px auto;color:#755861}.final-scene blockquote{font:italic 1.4rem/1.5 Georgia,serif;color:#954c67;margin:28px auto;max-width:35ch}.final-sign{font:italic 1.3rem Georgia,serif;color:#a05670}</style>
+.final-scene{text-align:center;margin:48px 0 20px;padding:32px 20px;background:linear-gradient(160deg,#fffdf8,#f7e1e9);border:1px solid #deb7c7;border-radius:140px 140px 20px 20px;box-shadow:0 18px 50px #9b536e15}.final-sticker{display:block;width:min(100%,420px);height:auto;margin:20px auto}.final-scene h2{font-size:clamp(2.3rem,8vw,3.6rem);color:#944961}.final-scene p{max-width:48ch;margin:20px auto;color:#755861}.final-scene blockquote{font:italic 1.4rem/1.5 Georgia,serif;color:#954c67;margin:28px auto;max-width:35ch}.final-sign{font:italic 1.3rem Georgia,serif;color:#a05670}.music-panel{position:fixed;right:16px;bottom:16px;width:230px;z-index:20;padding:10px;border:1px solid #d6af8480;border-radius:14px;background:#25192deF;color:#f5dfc2;box-shadow:0 8px 35px #0004;text-align:left}.music-panel summary{cursor:pointer;font-size:.7rem;line-height:1.5;list-style-position:outside;margin:0 6px}.music-panel iframe{display:block;width:100%;height:119px;border:0;border-radius:8px;margin-top:9px}.music-panel a{display:block;color:#f6c6d6;font-size:.65rem;margin-top:6px}.music-panel p{font-size:.6rem;margin:3px 0 0;color:#d1bcc9}@media(max-width:700px){.music-panel{right:8px;bottom:8px;width:190px}.music-panel iframe{height:102px}.heart-gate{padding-bottom:210px;min-height:100svh}#story{padding-bottom:195px}}</style>
 </head>
-<body><div id="gateFlash" class="gate-flash" aria-hidden="true"></div><span class="petal" style="--left:7%;--time:12s;--delay:-5s" aria-hidden="true"></span><span class="petal" style="--left:88%;--time:15s;--delay:-9s" aria-hidden="true"></span><span class="petal" style="--left:35%;--time:18s;--delay:-3s" aria-hidden="true"></span><main><section id="heartGate" class="heart-gate" aria-label="Inserta la llave para abrir la sorpresa">
+<body><aside id="musicPanel" class="music-panel" aria-label="Música de nuestra historia"><details open><summary>♫ <span id="songName">Me Enamoré de Ti · Chayanne</span></summary><iframe id="musicVideo" title="Me Enamoré de Ti de Chayanne, video oficial" src="https://www.youtube.com/embed/iZ9dkLr5Kv0?playsinline=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a id="songLink" href="https://www.youtube.com/watch?v=iZ9dkLr5Kv0" target="_blank" rel="noopener noreferrer">Abrir canción en YouTube ↗</a><p>Dale ▶ para acompañar este momento.</p></details></aside><div id="gateFlash" class="gate-flash" aria-hidden="true"></div><span class="petal" style="--left:7%;--time:12s;--delay:-5s" aria-hidden="true"></span><span class="petal" style="--left:88%;--time:15s;--delay:-9s" aria-hidden="true"></span><span class="petal" style="--left:35%;--time:18s;--delay:-3s" aria-hidden="true"></span><main><section id="heartGate" class="heart-gate" aria-label="Inserta la llave para abrir la sorpresa">
 <div class="gate-stars" aria-hidden="true"></div><div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
 <span class="gate-eyebrow">UN PEQUEÑO SECRETO</span>
 <h1>Inserta <em>la llave.</em></h1>
@@ -208,6 +208,11 @@ function revealStory() {
 function openHeart() {
   if (opening) return;
   opening = true;
+  const musicVideo = document.getElementById('musicVideo');
+  musicVideo.src = 'https://www.youtube.com/embed/dH7_By3Y2i0?autoplay=1&playsinline=1&rel=0';
+  musicVideo.title = 'La Distancia de Manuel Medrano, video oficial';
+  document.getElementById('songName').textContent = 'La Distancia · Manuel Medrano';
+  document.getElementById('songLink').href = 'https://www.youtube.com/watch?v=dH7_By3Y2i0';
   unlock.disabled = true;
   unlock.style.transform = '';
   document.getElementById('unlockStatus').textContent = 'Abriendo el corazón…';
